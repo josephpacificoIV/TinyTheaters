@@ -29,7 +29,7 @@
 - show_id
 - show_name
 - ticket_price
-- show_total
+- show_openings
 
 ## Seat Table
 - seat_id
