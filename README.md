@@ -5,7 +5,7 @@
 ## TicketPurchase Table
 - ticket_purchase_id
 - theater_id
-- seat_id
+- seat_label
 - customer_id
 - show_id	
 - date
@@ -30,12 +30,6 @@
 - show_name
 - ticket_price
 - show_openings
-
-## Seat Table
-- seat_id
-- seat_label
-- theater_id
-
 
 # DML
 - Update
