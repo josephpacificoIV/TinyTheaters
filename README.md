@@ -1,5 +1,7 @@
 # TinyTheaters
 
+# DDL - Database Diagram
+
 ## Registration
 
 - seat	
@@ -22,3 +24,10 @@
 - theater_address	
 - theater_phone	
 - theater_email
+
+# DML
+- Update
+- Delete
+
+# Query 
+- 
