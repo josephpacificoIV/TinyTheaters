@@ -4,8 +4,9 @@
 
 ## TicketPurchase Table
 
+- ticket_purchase_id
 - theater_id
-- seat
+- seat_id
 - customer_email
 - show_id	
 - date
@@ -31,6 +32,11 @@
 - show_id
 - show_name
 - ticket_price
+
+## Seat Table
+- seat_id
+- seat_name
+- theater_id
 
 
 # DML
