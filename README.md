@@ -2,16 +2,19 @@
 
 # DDL - Database Diagram
 
-## Registration
+## TicketPurchase Table
 
-- seat	
-- show	
-- ticket_price	
-- date	
+- theater_id* 
+- seat
+- customer_email
+- show_id	
+- date
 
+* new
 
 ## Customer Table
 
+- customer_id
 - customer_first	
 - customer_last	
 - customer_email	
@@ -20,10 +23,17 @@
 
 ## Theater Table
 
-- theater	
+- theater_id
+- theater_name
 - theater_address	
 - theater_phone	
 - theater_email
+
+## Show Table
+- show_id
+- show_name
+- ticket_price
+
 
 # DML
 - Update
