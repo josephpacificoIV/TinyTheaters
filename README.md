@@ -4,13 +4,11 @@
 
 ## TicketPurchase Table
 
-- theater_id* 
+- theater_id
 - seat
 - customer_email
 - show_id	
 - date
-
-* new
 
 ## Customer Table
 
