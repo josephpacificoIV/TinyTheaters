@@ -3,16 +3,14 @@
 # DDL - Database Diagram
 
 ## TicketPurchase Table
-
 - ticket_purchase_id
 - theater_id
 - seat_id
-- customer_email
+- customer_id
 - show_id	
 - date
 
 ## Customer Table
-
 - customer_id
 - customer_first	
 - customer_last	
@@ -21,7 +19,6 @@
 - customer_address	
 
 ## Theater Table
-
 - theater_id
 - theater_name
 - theater_address	
@@ -32,12 +29,11 @@
 - show_id
 - show_name
 - ticket_price
-- show_start_date
-- show_end_date
+- show_total
 
 ## Seat Table
 - seat_id
-- seat_name
+- seat_label
 - theater_id
 
 
