@@ -32,6 +32,8 @@
 - show_id
 - show_name
 - ticket_price
+- show_start_date
+- show_end_date
 
 ## Seat Table
 - seat_id
