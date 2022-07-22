@@ -39,9 +39,9 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `TinyTheaters`.`Theater` ;
 
 CREATE TABLE IF NOT EXISTS `TinyTheaters`.`Theater` (
-  `theater_id` INT NOT NULL,
+  `theater_id` INT NOT NULL AUTO_INCREMENT,
   `theater_name` VARCHAR(45) NOT NULL,
-  `theater_address` VARCHAR(45) NOT NULL,
+  `theater_address` VARCHAR(100) NOT NULL,
   `theater_phone` VARCHAR(45) NOT NULL,
   `theater_email` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`theater_id`))
