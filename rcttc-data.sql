@@ -135,7 +135,7 @@ where customer_first = 'Jammie' and customer_last = 'Swindles';
 -- ==================DELETE=========================
 
 -- this finds the single ticket reservations for a given theater
--- 87 rows of tickets purchased at 10 pins
+-- 87 rows of tickets purchased at 10 pins theater
 select count(t.customer_id) total_tickets, t.customer_id, r.theater_name, s.show_name
 from TicketPurchase t
 left outer join `Show` s on s.show_id = t.show_id
@@ -151,9 +151,6 @@ order by customer_id;
 -- select * from TicketPurchase where show_id in (1,2,3,4); 
 -- 87 tickets purchased for shows at 10 Pin, 9 of which are single ticket
 -- should return 78 rows of tickets purchased at the 10 Pin. 
-
-
-
 -- delete 9 tickets from main ticket registry
 
 -- confirm
@@ -168,25 +165,34 @@ delete from TicketPurchase where ticket_purchase_id in (25,26, 29, 41, 50, 51, 5
 select * from TicketPurchase;
 
 
+
+
 -- delete #2
+select * 
+from Customer
+where customer_first = 'Liv'; 
+
+-- customer_id = 65
 
 
+-- delete from TicketPurchase first, since there is a foreign key from Customer
 
-
-
-
-
+select * from TicketPurchase where customer_id = 65; -- 2 ticket reservations to be deleted
 -- -- disable safe updates
--- set sql_safe_updates = 0;
-
--- -- remove all in one statement.
--- delete from Customer where customer_id > 0;
-
+set sql_safe_updates = 0;
+delete from TicketPurchase where customer_id = 65;
 -- -- enable safe updates
--- set sql_safe_updates = 1;
+set sql_safe_updates = 1;
+-- should return null
+select * from TicketPurchase where customer_id = 65;
 
--- select * from Customer;
+-- now delete in Customer
+-- -- disable safe updates
+set sql_safe_updates = 0;
+delete from Customer where customer_first = 'Liv';
+-- -- enable safe updates
+set sql_safe_updates = 1;
+-- should return null
+select * from Customer where customer_first = 'Liv';
 
--- -- check first
--- select distinct customer_first, customer_last, customer_email, customer_phone, customer_address
--- from `rcttc-data`;
+-- =====End of DML===============
