@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `TinyTheaters`.`TicketPurchase` (
   `show_id` INT NOT NULL,
   PRIMARY KEY (`ticket_purchase_id`),
   INDEX `fk_TicketPurchase_Customer1_idx` (`customer_id` ASC) VISIBLE,
-  UNIQUE INDEX `seat_id_UNIQUE` (`seat_label` ASC) VISIBLE,
+  INDEX `seat_id_UNIQUE` (`seat_label` ASC) VISIBLE,
   INDEX `fk_TicketPurchase_Show1_idx` (`show_id` ASC) VISIBLE,
   CONSTRAINT `fk_TicketPurchase_Customer1`
     FOREIGN KEY (`customer_id`)

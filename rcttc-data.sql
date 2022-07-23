@@ -28,17 +28,43 @@ from `rcttc-data`;
 
 select * from Theater;
 
--- confirm
+-- Show
 select * from `Show`;
 
+-- confirm
 select distinct t.theater_id, `show`, ticket_price, date
 from `rcttc-data` d
 inner join Theater t on t.theater_name = d.theater;
 
+-- insert 
+insert into `Show`(show_name, ticket_price, date, theater_id)
+select distinct `show`, ticket_price, date, t.theater_id
+from `rcttc-data` d
+inner join Theater t on t.theater_name = d.theater;
+
+select * from `Show`;
+
+
+-- TicketPurchase
+
 select * from Theater;
--- insert into `Show`(show_name, ticket_price, date)
--- select distinct `show`, ticket_price, date
--- from `rcttc-data`;
+select * from `rcttc-data`;
+
+select distinct d.seat, c.customer_id, s.show_id
+from `rcttc-data` d
+inner join Customer c on c.customer_first = d.customer_first and c.customer_last = d.customer_last and c.customer_email = d.customer_email
+inner join Theater t on t.theater_name = d.theater
+inner join `Show` s on s.show_name = d.show and s.date = d.date and s.theater_id = t.theater_id;
+
+
+insert into TicketPurchase(seat_label, customer_id, show_id)
+select distinct d.seat, c.customer_id, s.show_id
+from `rcttc-data` d
+inner join Customer c on c.customer_first = d.customer_first and c.customer_last = d.customer_last and c.customer_email = d.customer_email
+inner join Theater t on t.theater_name = d.theater
+inner join `Show` s on s.show_name = d.show and s.date = d.date and s.theater_id = t.theater_id;
+
+select * from TicketPurchase;
 
 
 
