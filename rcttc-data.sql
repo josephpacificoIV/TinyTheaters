@@ -134,23 +134,46 @@ where customer_first = 'Jammie' and customer_last = 'Swindles';
 
 -- ==================DELETE=========================
 
--- 87 rows of tickets purchase at 10 pins
-select r.theater_name, t.customer_id, count(customer_id) -- s.show_name, s.date, t.customer_id, r.theater_name
+-- this finds the single ticket reservations for a given theater
+-- 87 rows of tickets purchased at 10 pins
+select count(t.customer_id) total_tickets, t.customer_id, r.theater_name, s.show_name
 from TicketPurchase t
 left outer join `Show` s on s.show_id = t.show_id
 left outer join Theater r on r.theater_id = s.theater_id
-group by t.customer_id, r.theater_name
--- group by t.customer_id, s.show_name, s.date, r.theater_name
--- having r.theater_name = '10 Pin';
-having r.theater_name = '10 Pin' and count(customer_id) = 1;
+group by t.customer_id, r.theater_name, s.show_name
+having r.theater_name = '10 Pin' and total_tickets = 1
+order by customer_id;
 
---  should have 3 single-ticket reservations for 10 Pin on 2021-01-04 show The Dress
-select *
-from TicketPurchase t
-left outer join `Show` s on s.show_id = t.show_id
-left outer join Theater r on r.theater_id = s.theater_id
-where r.theater_name = '10 Pin' and show_name = 'The Dress'
-order by customer_id, seat_label;
+-- there are 9 single-ticket reservations at the 10 Pin that need to be removed
+-- customer_id = 7,8,10,15 in Send in the Clowns (4 tickets)
+-- customer_id = 18,19,22,25,26 in The Dress (4 tickets)
+-- customer_id = 26 in Tell Me What To Think (1 ticket)
+-- select * from TicketPurchase where show_id in (1,2,3,4); 
+-- 87 tickets purchased for shows at 10 Pin, 9 of which are single ticket
+-- should return 78 rows of tickets purchased at the 10 Pin. 
+
+
+
+-- delete 9 tickets from main ticket registry
+
+-- confirm
+select * 
+from TicketPurchase -- 194 rows
+where ticket_purchase_id not in (25,26, 29, 41, 50, 51, 59, 67, 68);
+
+-- delete the 9 single reservations from 10 pins
+delete from TicketPurchase where ticket_purchase_id in (25,26, 29, 41, 50, 51, 59, 67, 68);
+
+-- should return 185 rows 
+select * from TicketPurchase;
+
+
+-- delete #2
+
+
+
+
+
 
 
 -- -- disable safe updates
