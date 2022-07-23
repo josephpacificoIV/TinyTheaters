@@ -1,3 +1,6 @@
+
+-- right click on TinyTheaters, Data Import Wizard, find the `rcttc-data` CSV, import into new table, click wrench icon, change delimiter to a comma
+
 use TinyTheaters;
 -- Step 4: Transform
 -- With our imported data and target schema in the same database, we can write SQL to select from the imported table 
