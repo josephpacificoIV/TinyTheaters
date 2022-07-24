@@ -10,9 +10,9 @@ select distinct customer_first, customer_last
 from Customer;
 
 -- Find all customers without a .com email address.
-select * 
+select *
 from Customer 
-where customer_email like '%.com';
+where customer_email not like '%.com';
 
 -- Find the three cheapest shows.
 select distinct s.show_name,  s.date, s.ticket_price
